@@ -1,69 +1,134 @@
-<!-- CHOIX (QUESTION + REDIRECTION) -->
-<section id="choix" class="pb-14 md:pb-20">
-  <div class="rounded-3xl bg-gradient-to-br from-white/7 to-white/3 hairline p-6 md:p-8">
-    <div class="grid md:grid-cols-12 gap-6 items-center">
-      <div class="md:col-span-7">
-        <h2 class="font-display text-2xl md:text-3xl text-white tracking-tight">
-          Êtes-vous une université ou une école ?
-        </h2>
-        <p class="mt-3 text-slate-300">
-          Choisissez votre type d’établissement pour lancer la simulation adaptée.
-        </p>
-      </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kolilink — Choisissez votre établissement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --bg: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e5e7eb;
+    }
 
-      <div class="md:col-span-5">
-        <div class="grid gap-3">
-          <!-- UNIVERSITE -->
-          <button
-            type="button"
-            data-go="https://uni.kolilink.com"
-            class="go-btn focus-ring group rounded-3xl bg-white text-[#0B1220] p-5 hover:bg-white/95 transition flex items-center justify-between"
-          >
-            <div>
-              <div class="text-xs text-slate-500 font-semibold tracking-wide uppercase">Université</div>
-              <div class="mt-1 text-lg font-semibold">Lancer la simulation</div>
-            </div>
-            <div class="w-10 h-10 rounded-2xl bg-[#3b82f6]/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-[#3b82f6] group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </div>
-          </button>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
 
-          <!-- ECOLE -->
-          <button
-            type="button"
-            data-go="https://simulation.kolilink.com"
-            class="go-btn focus-ring group rounded-3xl bg-white/6 hairline p-5 hover:bg-white/8 transition flex items-center justify-between"
-          >
-            <div>
-              <div class="text-xs text-slate-400 font-semibold tracking-wide uppercase">Primaire / Collège</div>
-              <div class="mt-1 text-lg font-semibold text-white">Lancer la simulation</div>
-            </div>
-            <div class="w-10 h-10 rounded-2xl bg-[#3b82f6]/15 hairline flex items-center justify-center">
-              <svg class="w-5 h-5 text-[#93c5fd] group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </div>
-          </button>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
 
-          <div class="text-xs text-slate-400 mt-1">
-            Vous ne savez pas ? Choisissez la simulation la plus proche de votre réalité.
-          </div>
+    .container {
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      background: #fff;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .card-cta {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 14px;
+      margin-top: 8px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Quel type d’établissement êtes-vous ?</h1>
+    <p>Choisissez votre catégorie pour lancer la simulation adaptée.</p>
+
+    <div class="cards">
+      <a href="https://uni.kolilink.com" class="card">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" alt="Université">
+        <div class="card-content">
+          <div class="card-title">Université</div>
+          <div class="card-cta">Lancer la simulation →</div>
         </div>
-      </div>
+      </a>
+
+      <a href="https://simulation.kolilink.com" class="card">
+        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350" alt="École">
+        <div class="card-content">
+          <div class="card-title">Primaire & Collège</div>
+          <div class="card-cta">Lancer la simulation →</div>
+        </div>
+      </a>
     </div>
   </div>
-</section>
 
-<script>
-  // Redirection au clic (simple, fiable, sans dépendances)
-  document.querySelectorAll(".go-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const url = btn.getAttribute("data-go");
-      if (url) window.location.href = url;
-    });
-  });
-</script>
+</body>
+</html>
