@@ -1,381 +1,69 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kolilink — Financement simple pour écoles & universités</title>
-
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --ink:#0B1220;
-      --muted:#64748B;
-      --card:#0F172A;
-      --brand:#2563EB;
-      --brand2:#22C55E;
-    }
-    html,body{height:100%}
-    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#0B1220; color:#E5E7EB;}
-    .font-display{font-family:"Space Grotesk",Inter,system-ui,sans-serif;}
-    /* Soft grain */
-    .grain{
-      background-image: radial-gradient(1200px 600px at 20% 10%, rgba(37,99,235,.22), transparent 60%),
-                        radial-gradient(900px 500px at 85% 25%, rgba(34,197,94,.16), transparent 55%),
-                        radial-gradient(900px 500px at 55% 85%, rgba(249,115,22,.12), transparent 55%),
-                        linear-gradient(to bottom, rgba(255,255,255,.06), transparent 35%);
-    }
-    .shine{
-      position:relative;
-      overflow:hidden;
-    }
-    .shine::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: linear-gradient(135deg, rgba(255,255,255,.10), transparent 35%, rgba(255,255,255,.06));
-      pointer-events:none;
-      opacity:.85;
-    }
-    /* Subtle border */
-    .hairline{border:1px solid rgba(148,163,184,.18);}
-    /* Focus ring */
-    .focus-ring:focus{outline:none; box-shadow: 0 0 0 4px rgba(37,99,235,.25);}
-  </style>
-</head>
-
-<body class="min-h-screen grain">
-  <!-- Top bar -->
-  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0B1220]/65 border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
-        <div class="w-9 h-9 rounded-xl bg-white/10 hairline flex items-center justify-center">
-          <span class="font-display font-bold tracking-tight text-white">K</span>
-        </div>
-        <div class="leading-tight">
-          <div class="font-display font-semibold text-white tracking-tight">KOLILINK</div>
-          <div class="text-[11px] text-slate-400">Financement scolaire, simple et mesurable</div>
-        </div>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-7 text-sm text-slate-300">
-        <a href="#comment" class="hover:text-white transition">Comment ça marche</a>
-        <a href="#pourqui" class="hover:text-white transition">Pour qui</a>
-        <a href="#faq" class="hover:text-white transition">FAQ</a>
-      </nav>
-
-      <div class="flex items-center gap-2">
-        <a href="#choix"
-           class="inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold bg-white text-[#0B1220] hover:bg-white/90 transition">
-          Démarrer
-        </a>
+<!-- CHOIX (QUESTION + REDIRECTION) -->
+<section id="choix" class="pb-14 md:pb-20">
+  <div class="rounded-3xl bg-gradient-to-br from-white/7 to-white/3 hairline p-6 md:p-8">
+    <div class="grid md:grid-cols-12 gap-6 items-center">
+      <div class="md:col-span-7">
+        <h2 class="font-display text-2xl md:text-3xl text-white tracking-tight">
+          Êtes-vous une université ou une école ?
+        </h2>
+        <p class="mt-3 text-slate-300">
+          Choisissez votre type d’établissement pour lancer la simulation adaptée.
+        </p>
       </div>
-    </div>
-  </header>
 
-  <!-- Hero -->
-  <main class="max-w-6xl mx-auto px-4">
-    <section class="pt-10 md:pt-16 pb-10 md:pb-14">
-      <div class="grid md:grid-cols-12 gap-8 items-center">
-        <div class="md:col-span-7">
-          <div class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 bg-white/5 hairline text-xs text-slate-300">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            Pour responsables d’écoles, collèges & universités
-          </div>
-
-          <h1 class="mt-5 font-display text-4xl md:text-5xl leading-[1.05] tracking-tight text-white">
-            Une façon claire pour les établissements scolaires de
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-300">générer des fonds</span>
-            — sans compliquer la vie.
-          </h1>
-
-          <p class="mt-5 text-base md:text-lg text-slate-300 max-w-2xl">
-            Kolilink vous aide à estimer, en quelques secondes, le potentiel de financement basé sur des kits de fournitures.
-            Rien de flou : une simulation, des chiffres, une direction.
-          </p>
-
-          <div class="mt-7 flex flex-col sm:flex-row gap-3">
-            <a href="#choix"
-               class="focus-ring inline-flex items-center justify-center rounded-2xl px-6 py-3.5 text-sm font-semibold bg-blue-600 hover:bg-blue-500 transition shadow-lg shadow-blue-600/20">
-              Lancer une simulation
-              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="md:col-span-5">
+        <div class="grid gap-3">
+          <!-- UNIVERSITE -->
+          <button
+            type="button"
+            data-go="https://uni.kolilink.com"
+            class="go-btn focus-ring group rounded-3xl bg-white text-[#0B1220] p-5 hover:bg-white/95 transition flex items-center justify-between"
+          >
+            <div>
+              <div class="text-xs text-slate-500 font-semibold tracking-wide uppercase">Université</div>
+              <div class="mt-1 text-lg font-semibold">Lancer la simulation</div>
+            </div>
+            <div class="w-10 h-10 rounded-2xl bg-[#3b82f6]/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#3b82f6] group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
-            </a>
-
-            <a href="#comment"
-               class="focus-ring inline-flex items-center justify-center rounded-2xl px-6 py-3.5 text-sm font-semibold bg-white/5 hover:bg-white/8 hairline transition">
-              Comprendre en 30 secondes
-            </a>
-          </div>
-
-          <div class="mt-6 flex items-center gap-6 text-xs text-slate-400">
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
-              Simple
             </div>
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
-              Mesurable
+          </button>
+
+          <!-- ECOLE -->
+          <button
+            type="button"
+            data-go="https://simulation.kolilink.com"
+            class="go-btn focus-ring group rounded-3xl bg-white/6 hairline p-5 hover:bg-white/8 transition flex items-center justify-between"
+          >
+            <div>
+              <div class="text-xs text-slate-400 font-semibold tracking-wide uppercase">Primaire / Collège</div>
+              <div class="mt-1 text-lg font-semibold text-white">Lancer la simulation</div>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
-              Adapté au terrain
+            <div class="w-10 h-10 rounded-2xl bg-[#3b82f6]/15 hairline flex items-center justify-center">
+              <svg class="w-5 h-5 text-[#93c5fd] group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+              </svg>
             </div>
+          </button>
+
+          <div class="text-xs text-slate-400 mt-1">
+            Vous ne savez pas ? Choisissez la simulation la plus proche de votre réalité.
           </div>
         </div>
-
-        <!-- Right card -->
-        <div class="md:col-span-5">
-          <div class="shine rounded-3xl bg-white/5 hairline p-5 md:p-6">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <div class="text-sm font-semibold text-white">Ce que vous obtenez</div>
-                <div class="text-xs text-slate-400 mt-1">En moins de 1 minute</div>
-              </div>
-              <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 hairline flex items-center justify-center">
-                <svg class="w-5 h-5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m7 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="mt-5 grid gap-3">
-              <div class="rounded-2xl bg-[#0F172A]/60 hairline p-4">
-                <div class="text-xs text-slate-400">1) Potentiel annuel</div>
-                <div class="mt-1 text-lg font-semibold text-white">Un chiffre clair (GNF)</div>
-              </div>
-              <div class="rounded-2xl bg-[#0F172A]/60 hairline p-4">
-                <div class="text-xs text-slate-400">2) Répartition</div>
-                <div class="mt-1 text-lg font-semibold text-white">Plan d’urgence / priorités</div>
-              </div>
-              <div class="rounded-2xl bg-[#0F172A]/60 hairline p-4">
-                <div class="text-xs text-slate-400">3) Rapport imprimable</div>
-                <div class="mt-1 text-lg font-semibold text-white">PDF propre pour décision</div>
-              </div>
-            </div>
-
-            <div class="mt-5 text-xs text-slate-400">
-              Important : la simulation est un <span class="text-slate-200 font-semibold">outil de décision</span>. Pas une promesse.
-              Les résultats dépendent des choix, du contexte et de l’exécution.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Proof / statement -->
-    <section class="pb-10">
-      <div class="rounded-3xl bg-white/5 hairline p-6 md:p-8">
-        <div class="grid md:grid-cols-12 gap-6 items-center">
-          <div class="md:col-span-8">
-            <h2 class="font-display text-2xl md:text-3xl text-white tracking-tight">
-              La première question n’est pas “est-ce possible ?”
-              <span class="text-slate-300">C’est : “combien, exactement ?”</span>
-            </h2>
-            <p class="mt-3 text-slate-300">
-              Beaucoup d’établissements laissent passer des opportunités de financement simplement parce qu’ils n’ont pas un modèle clair,
-              ni des chiffres présentés proprement. Kolilink commence par la base : une estimation nette.
-            </p>
-          </div>
-          <div class="md:col-span-4">
-            <div class="grid grid-cols-2 gap-3">
-              <div class="rounded-2xl bg-[#0F172A]/60 hairline p-4">
-                <div class="text-xs text-slate-400">Zéro jargon</div>
-                <div class="mt-1 font-semibold text-white">Direct</div>
-              </div>
-              <div class="rounded-2xl bg-[#0F172A]/60 hairline p-4">
-                <div class="text-xs text-slate-400">Zéro friction</div>
-                <div class="mt-1 font-semibold text-white">Rapide</div>
-              </div>
-              <div class="rounded-2xl bg-[#0F172A]/60 hairline p-4 col-span-2">
-                <div class="text-xs text-slate-400">Objectif</div>
-                <div class="mt-1 font-semibold text-white">Décider avec des chiffres</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How it works -->
-    <section id="comment" class="pb-12 md:pb-16">
-      <div class="flex items-end justify-between gap-4">
-        <h2 class="font-display text-2xl md:text-3xl text-white tracking-tight">Comment ça marche</h2>
-        <div class="text-xs text-slate-400">3 étapes. Pas plus.</div>
-      </div>
-
-      <div class="mt-6 grid md:grid-cols-3 gap-4">
-        <div class="rounded-3xl bg-white/5 hairline p-6">
-          <div class="w-10 h-10 rounded-2xl bg-blue-600/15 hairline flex items-center justify-center">
-            <span class="font-display font-semibold text-blue-300">1</span>
-          </div>
-          <h3 class="mt-4 font-semibold text-white">Vous entrez vos paramètres</h3>
-          <p class="mt-2 text-sm text-slate-300">
-            Effectif, produits, prix, quantités. Vous gardez le contrôle.
-          </p>
-        </div>
-
-        <div class="rounded-3xl bg-white/5 hairline p-6">
-          <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 hairline flex items-center justify-center">
-            <span class="font-display font-semibold text-emerald-300">2</span>
-          </div>
-          <h3 class="mt-4 font-semibold text-white">Kolilink calcule</h3>
-          <p class="mt-2 text-sm text-slate-300">
-            Marge par kit, total annuel, projection, et une répartition lisible.
-          </p>
-        </div>
-
-        <div class="rounded-3xl bg-white/5 hairline p-6">
-          <div class="w-10 h-10 rounded-2xl bg-orange-500/15 hairline flex items-center justify-center">
-            <span class="font-display font-semibold text-orange-300">3</span>
-          </div>
-          <h3 class="mt-4 font-semibold text-white">Vous imprimez un rapport</h3>
-          <p class="mt-2 text-sm text-slate-300">
-            Un PDF propre, prêt à être partagé pour décider rapidement.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Choice section -->
-    <section id="choix" class="pb-14 md:pb-20">
-      <div class="rounded-3xl bg-gradient-to-br from-white/7 to-white/3 hairline p-6 md:p-8">
-        <div class="grid md:grid-cols-12 gap-6 items-center">
-          <div class="md:col-span-7">
-            <h2 class="font-display text-2xl md:text-3xl text-white tracking-tight">
-              Où voulez-vous commencer ?
-            </h2>
-            <p class="mt-3 text-slate-300">
-              Choisissez votre type d’établissement. Vous serez redirigé vers la page la plus adaptée.
-            </p>
-          </div>
-          <div class="md:col-span-5">
-            <div class="grid gap-3">
-              <!-- University -->
-              <a href="https://uni.kolilink.com"
-                 class="focus-ring group rounded-3xl bg-white text-[#0B1220] p-5 hover:bg-white/95 transition flex items-center justify-between">
-                <div>
-                  <div class="text-xs text-slate-500 font-semibold tracking-wide uppercase">Université</div>
-                  <div class="mt-1 text-lg font-semibold">Lancer la simulation université</div>
-                </div>
-                <div class="w-10 h-10 rounded-2xl bg-blue-600/10 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-blue-700 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </div>
-              </a>
-
-              <!-- Primary / College -->
-              <a href="https://simulation.kolilink.com"
-                 class="focus-ring group rounded-3xl bg-white/6 hairline p-5 hover:bg-white/8 transition flex items-center justify-between">
-                <div>
-                  <div class="text-xs text-slate-400 font-semibold tracking-wide uppercase">Primaire / Collège</div>
-                  <div class="mt-1 text-lg font-semibold text-white">Lancer la simulation</div>
-                </div>
-                <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 hairline flex items-center justify-center">
-                  <svg class="w-5 h-5 text-emerald-300 group-hover:translate-x-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </div>
-              </a>
-
-              <div class="text-xs text-slate-400 mt-1">
-                Si vous n’êtes pas sûr, commencez par la simulation la plus proche de votre réalité (effectif + niveau).
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- For who -->
-    <section id="pourqui" class="pb-12 md:pb-16">
-      <h2 class="font-display text-2xl md:text-3xl text-white tracking-tight">Pour qui ?</h2>
-      <p class="mt-3 text-slate-300 max-w-2xl">
-        Pour les personnes qui prennent des décisions — et qui veulent du concret.
-      </p>
-
-      <div class="mt-6 grid md:grid-cols-3 gap-4">
-        <div class="rounded-3xl bg-white/5 hairline p-6">
-          <div class="text-sm font-semibold text-white">Directions</div>
-          <p class="mt-2 text-sm text-slate-300">Avoir un chiffre clair et un rapport imprimable pour arbitrer.</p>
-        </div>
-        <div class="rounded-3xl bg-white/5 hairline p-6">
-          <div class="text-sm font-semibold text-white">Administrations</div>
-          <p class="mt-2 text-sm text-slate-300">Comparer des scénarios et prioriser les dépenses.</p>
-        </div>
-        <div class="rounded-3xl bg-white/5 hairline p-6">
-          <div class="text-sm font-semibold text-white">Fondateurs / porteurs de projet</div>
-          <p class="mt-2 text-sm text-slate-300">Structurer un modèle simple et reproductible.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="pb-16 md:pb-24">
-      <div class="flex items-end justify-between gap-4">
-        <h2 class="font-display text-2xl md:text-3xl text-white tracking-tight">FAQ</h2>
-        <div class="text-xs text-slate-400">Simple, sans détour</div>
-      </div>
-
-      <div class="mt-6 grid md:grid-cols-2 gap-4">
-        <details class="rounded-3xl bg-white/5 hairline p-6">
-          <summary class="cursor-pointer font-semibold text-white">Est-ce une promesse de résultats ?</summary>
-          <p class="mt-3 text-sm text-slate-300">
-            Non. C’est un outil de simulation pour décider avec des chiffres. Le résultat dépend des paramètres et de l’exécution.
-          </p>
-        </details>
-
-        <details class="rounded-3xl bg-white/5 hairline p-6">
-          <summary class="cursor-pointer font-semibold text-white">Pourquoi une simulation d’abord ?</summary>
-          <p class="mt-3 text-sm text-slate-300">
-            Parce qu’une décision sérieuse commence par une estimation nette : “combien, si on le fait bien ?”.
-          </p>
-        </details>
-
-        <details class="rounded-3xl bg-white/5 hairline p-6">
-          <summary class="cursor-pointer font-semibold text-white">Combien de temps ça prend ?</summary>
-          <p class="mt-3 text-sm text-slate-300">
-            En général : moins d’une minute. Vous renseignez vos infos, vous lancez, vous obtenez le rapport.
-          </p>
-        </details>
-
-        <details class="rounded-3xl bg-white/5 hairline p-6">
-          <summary class="cursor-pointer font-semibold text-white">Je suis université. Je vais où ?</summary>
-          <p class="mt-3 text-sm text-slate-300">
-            Sur <span class="text-white font-semibold">uni.kolilink.com</span>. C’est la version pensée pour les universités.
-          </p>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-white/10 bg-[#0B1220]/60">
-    <div class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <div>
-        <div class="font-display font-semibold text-white">KOLILINK</div>
-        <div class="text-xs text-slate-400 mt-1">© <span id="year"></span> — Tous droits réservés</div>
-      </div>
-      <div class="text-xs text-slate-400 max-w-xl">
-        Kolilink présente des estimations basées sur les données saisies. Pour une décision finale, tenez compte des réalités opérationnelles.
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+<script>
+  // Redirection au clic (simple, fiable, sans dépendances)
+  document.querySelectorAll(".go-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const url = btn.getAttribute("data-go");
+      if (url) window.location.href = url;
+    });
+  });
+</script>
