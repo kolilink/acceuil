@@ -3,130 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kolilink — Choisissez votre établissement</title>
+  <title>Kolilink — Simulation</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --primary: #3b82f6;
-      --bg: #ffffff;
-      --text: #0f172a;
-      --muted: #64748b;
-      --border: #e5e7eb;
+    :root{
+      --primary:#3b82f6;
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --border:#e5e7eb;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      min-height:100vh;
+      padding:24px;
     }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 24px;
+    .container{max-width:760px;width:100%;text-align:center}
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:13px;
+      margin-bottom:14px;
     }
-
-    .container {
-      max-width: 720px;
-      width: 100%;
-      text-align: center;
+    .dot{
+      width:8px;height:8px;border-radius:99px;background:var(--primary);
+      box-shadow:0 0 0 6px rgba(59,130,246,.12);
     }
-
-    h1 {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
+    h1{
+      font-size:28px;
+      font-weight:800;
+      margin-bottom:10px;
+      letter-spacing:-0.02em;
+      line-height:1.15;
     }
-
-    p {
-      color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 32px;
+    .sub{
+      color:var(--muted);
+      font-size:16px;
+      margin-bottom:12px;
+      line-height:1.4;
     }
-
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+    .hint{
+      color:var(--text);
+      font-size:14px;
+      margin-bottom:26px;
+      font-weight:600;
     }
-
-    @media (min-width: 640px) {
-      .cards {
-        grid-template-columns: 1fr 1fr;
-      }
+    .cards{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
     }
-
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.25s ease;
-      background: #fff;
+    @media(min-width:640px){
+      .cards{grid-template-columns:1fr 1fr}
+      h1{font-size:34px}
     }
-
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    .card{
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      text-decoration:none;
+      color:inherit;
+      transition:all .25s ease;
+      background:#fff;
+      text-align:left;
     }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:var(--primary);
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
     }
-
-    .card-content {
-      padding: 20px;
-      text-align: left;
+    .card img{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      display:block;
+      background:#f1f5f9;
     }
-
-    .card-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 6px;
+    .card-content{padding:18px 18px 20px}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      font-weight:700;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.06em;
     }
-
-    .card-cta {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 14px;
-      margin-top: 8px;
-      display: inline-block;
+    .badge::before{
+      content:"";
+      width:8px;height:8px;border-radius:99px;background:var(--primary);
+    }
+    .card-title{
+      font-size:18px;
+      font-weight:700;
+      margin-top:10px;
+      margin-bottom:8px;
+    }
+    .card-cta{
+      color:var(--primary);
+      font-weight:700;
+      font-size:14px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .card-cta span{
+      display:inline-block;
+      transition:transform .2s ease;
+    }
+    .card:hover .card-cta span{transform:translateX(3px)}
+    .fineprint{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.4;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <h1>Quel type d’établissement êtes-vous ?</h1>
-    <p>Choisissez votre catégorie pour lancer la simulation adaptée.</p>
+    <div class="kicker">
+      <span class="dot"></span>
+      Simulation Kolilink
+    </div>
+
+    <h1>Kolilink aide les établissements à générer des fonds pour améliorer l’école.</h1>
+    <p class="sub">Découvrez ce que votre établissement peut générer, sans augmenter les frais.</p>
+    <div class="hint">Choisissez votre type d’établissement pour lancer la simulation.</div>
 
     <div class="cards">
+      <!-- UNIVERSITE -->
       <a href="https://uni.kolilink.com" class="card">
-        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" alt="Université">
+        <!-- Remplace l'image par une photo université en Afrique/Guinée -->
+        <img src="YOUR_UNI_IMAGE_URL" alt="Université">
         <div class="card-content">
-          <div class="card-title">Université</div>
-          <div class="card-cta">Lancer la simulation →</div>
+          <div class="badge">Université</div>
+          <div class="card-title">Lancer la simulation</div>
+          <div class="card-cta">Continuer <span>→</span></div>
         </div>
       </a>
 
+      <!-- PRIMAIRE / COLLEGE -->
       <a href="https://simulation.kolilink.com" class="card">
-        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350" alt="École">
+        <!-- Remplace l'image par une photo d'école en Guinée (élèves noirs) -->
+        <img src="YOUR_SCHOOL_IMAGE_URL" alt="Primaire et Collège">
         <div class="card-content">
-          <div class="card-title">Primaire & Collège</div>
-          <div class="card-cta">Lancer la simulation →</div>
+          <div class="badge">Primaire / Collège</div>
+          <div class="card-title">Lancer la simulation</div>
+          <div class="card-cta">Continuer <span>→</span></div>
         </div>
       </a>
+    </div>
+
+    <div class="fineprint">
+      Estimation basée sur vos informations. Les résultats sont indicatifs.
     </div>
   </div>
 
